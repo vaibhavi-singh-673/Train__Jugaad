@@ -1,0 +1,72 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+
+<style>
+    .shadow{
+      transition: .2s !important;
+    }
+    .shadow:hover{
+      box-shadow: 2px 2px 12px grey !important;
+      transform: scale(.95);
+    }
+    .class{
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .class .card{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 3rem;
+      width: 6rem;
+    }
+    .class input{
+      display: none;
+    }
+    input{
+      display: none;
+    }
+  </style>
+
+
+
+<body>
+    <div class="container py-5">
+      <h1>Alternating Staions</h1>
+      <% if (stationNearStart.length > 0 && stationNearEnd.length > 0){ %>
+        <p>We found the nearest stations from your source to destination</p>
+      <% } %>
+      <% if (stationNearStart.length < 1 && stationNearEnd.length < 1){ %>
+        <p>No alternative routes are found</p>
+      <% } %>
+      <div class="row">
+          <% for (let stationA of stationNearStart){ %>
+            <% for (let stationB of stationNearEnd){ %>
+                <div class="col-md-4 mb-3">
+                    <div class="card shadow" >
+                        <div class="card-body">
+                            <h5 class="card-title">From : <%= stationA.STATION_NAME %> <br> To : <%= stationB.STATION_NAME %></h5>
+                            <br>
+                            <form class="p-0 m-0" action="/train/search_train" method="get">
+                                <input type="text" name="from" value="<%= stationA.STATION_CODE %>">
+                                <input type="text" name="to" value="<%= stationB.STATION_CODE %>">
+                                <input type="date" name="date" value="<%= date %>">
+                                <button class="btn btn-outline-dark">Search Trains</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% } %>
+          <% } %>
+          <br>
+  
+         
+  
+        </div>
+    </div>
+  
+  </body>

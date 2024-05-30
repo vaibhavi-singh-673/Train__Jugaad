@@ -1,0 +1,81 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+<body>
+    
+    <!-- <div class="container">
+        <h1>Sign Up</h1>
+    <form action="/user/user_signup" method="post" novalidate class="needs-validation " autocomplete="off">
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" id="username" class="form-control" name="username" placeholder="Enter Username" required>
+                <div class="valid-feedback">Good Username</div>
+                <div class="invalid-feedback">Please enter relevent username</div>
+            </div>
+            <div class="col-sm-12">
+                <label for="email" class="form-label">E-mail</label>
+                <input type="text" id="email" class="form-control" name="email" placeholder="Enter E-mail" required>
+            </div>
+            <div class="col-sm-4">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" class="form-control" name="password" placeholder="Enter Password" required>
+            </div>
+        </div>
+        <button class="btn btn-primary" style="background-color: rgb(0, 148, 197); border: none;">Submit</button>
+    </form>
+    </div> -->
+
+
+
+    <style>
+        .login-form {
+          width: 350px;
+          margin: 50px auto;
+        }
+      </style>
+
+
+
+
+    <div class="container mt-2">
+        <h1 class="text-center mb-2">Sign In</h1>
+        <form class="login-form mt-0" action="/user/user_signup" method="post" novalidate class="needs-validation " autocomplete="off">
+          <div class="mb-3">
+            <label for="first_name" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="first_name" aria-describedby="usernameHelp" name="first_name" placeholder="Enter first name" required>
+          </div>
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="last_name" aria-describedby="usernameHelp" name="last_name" placeholder="Enter last name" >
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="text" id="email" class="form-control" name="email" placeholder="Enter E-mail" required>
+          </div>
+          <div class="mb-3">
+            <label for="age" class="form-label">Age</label>
+            <input type="number" id="age" class="form-control" name="age" placeholder="Enter Age" required>
+          </div>
+          <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" name="username" placeholder="Enter USername" required>
+            <div class="valid-feedback">Good Username</div>
+            <div class="invalid-feedback">Please enter relevent username</div>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            <div class="valid-feedback">Welcome</div>
+            <div class="invalid-feedback">Wrong password</div>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+          </div>
+          <a href="#" class="mt-3 d-block text-center">Forgot Password?</a>
+          <p class="text-center mt-3">Already have an account?  <a href="#">Log In</a></p>
+        </form>
+      </div>
+   
+</body>

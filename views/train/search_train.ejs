@@ -1,0 +1,93 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  .shadow{
+    transition: .2s !important;
+  }
+  .shadow:hover{
+    box-shadow: 2px 2px 12px grey !important;
+    transform: scale(.95);
+  }
+  .class{
+    width: 100%;
+    display: flex;
+    overflow: auto;
+    gap: .5rem;
+  }
+  .class .card{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 3rem;
+    width: 6rem;
+  }
+  .class input{
+    display: none;
+  }
+  input{
+    display: none;
+  }
+  .alter{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+</style>
+<body>
+  <div class="container py-5">
+    <h1>Train Search Results</h1>
+    <% if (trains.length > 0){ %>
+    <p>We found the following trains matching your search criteria:</p>
+    <% } %>
+    <% if (trains.length < 1){ %>
+    <p>No direct trains are found from source to destination</p>
+    <% } %>
+    <div class="row">
+        <% for (let train of trains){ %>
+        <div class="col-md-6 mb-3">
+            <div class="card shadow" >
+              <div class="card-body">
+                <h5 class="card-title"><%= train.train_number %> : <%= train.train_name %></h5>
+                <p class="card-text">
+                  From: <%= train.from_station_name %> - To: <%= train.to_station_name %><br>
+                  <%= train.from_std %> ----- <%= train.duration %>hrs ----- <%= train.to_sta %> <br>
+                </p>
+                <div class="class">
+                  <% for (let clas of train.class_type){ %>
+                    <form class="p-0 m-0" action="/train/booking" method="get">
+                      <input type="text" name="ob[train_number]" value="<%= train.train_number %>">
+                      <input type="text" name="ob[train_name]" value="<%= train.train_name %>">
+                      <input type="text" name="ob[from_std]" value="<%= train.from_std %>">
+                      <input type="text" name="ob[to_sta]" value="<%= train.to_sta %>">
+                      <input type="text" name="ob[from_station_name]" value="<%= train.from_station_name %>">
+                      <input type="text" name="ob[to_station_name]" value="<%= train.to_station_name %>">
+                      <input type="text" name="ob[train_date]" value="<%= train.train_date %>">
+                      <input type="text" name="ob[class_type]" value="<%= clas %>">
+                      <input type="text" name="ob[duration]" value="<%= train.duration %>">
+                    <button class="card class btn btn-outline-dark" >
+                        <%= clas %>
+                    </button>
+                    </form>
+                  <% } %>
+                </div>
+                <br>
+                <a href="#" class="btn btn-dark">See Availability</a>
+              </div>
+            </div>
+          </div>
+        <% } %>
+        <br>
+        
+        <form class="p-0 m-0" action="/train/alternating_stations" method="get">
+          <input type="text" name="startStationCode" value="<%= startStationCode %>">
+          <input type="text" name="endStationCode" value="<%= endStationCode %>">
+          <input type="date" name="date" value="<%= date %>">
+          <br>
+          <div class="alter">
+          <button class="btn btn-outline-dark btn-lg">Alternating Stations</button>
+          </div>
+        </form>
+
+      </div>
+  </div>
+
+</body>

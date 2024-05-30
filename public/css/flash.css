@@ -1,0 +1,31 @@
+.msg{
+    display: flex ;
+    justify-content: space-between ;
+    align-items: center;
+    box-shadow: 2px 2px 8px grey ;
+    background-color: white ;
+    height: 3rem;
+    width: 25rem;
+    animation: aminate .5s ease-in-out 1 ;
+    position: absolute;
+    right: 0;
+    top: 15%;
+    border-radius: initial !important;
+    border-left: 7px solid green;
+    z-index: 2;
+    overflow: hidden;
+}
+
+
+.red{
+    border-left: 7px solid red;
+}
+
+@keyframes aminate {
+    0%{
+        width : 0rem;
+    }
+    100%{
+        width : 25rem;
+    }
+}

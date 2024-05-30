@@ -1,0 +1,37 @@
+<% layout("/layouts/boilerplate") %>
+<style>
+  .shadow{
+    transition: .2s !important;
+  }
+  .shadow:hover{
+    box-shadow: 2px 2px 12px grey !important;
+    transform: scale(.95);
+  }
+
+
+</style>
+<body>
+  <div class="container py-5">
+    <h1>Your Booking History</h1>
+    <p>We found the following trips:</p>
+    <div class="row">
+        <% for (let booking of bookings){ %>
+        <div class="col-md-12 mb-3">
+            <div class="card shadow" >
+              <div class="card-body">
+                <h5 class="card-title"><%= booking.train_number %> : <%= booking.train_name %></h5>
+                <p class="card-text">
+                  From: <%= booking.from_station_name %> - To: <%= booking.to_station_name %><br>
+                  <%= booking.from_std %> ----- <%= booking.duration %>hrs ----- <%= booking.to_sta %> <br>
+                  On : <%= booking.train_date %> <br>
+                  In : <%= booking.class_type %>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+
+      </div>
+  </div>
+
+</body>

@@ -1,0 +1,98 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+ <style>
+ .banner {
+      background-image: url("banner.jpg"); /* Replace with your high-quality banner image */
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+      font-family: 'Poppins', sans-serif;  /* Optional: Add a premium font */
+    }
+    .banner h1 {
+      font-size: 4rem;
+      text-align: center;
+    }
+    .search-form {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .search-form input {
+      margin-bottom: 10px;
+      border-radius: 3px;
+    }
+    .why-choose-us {
+      margin-top: 50px;
+    }
+    .why-choose-us h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .why-choose-us ul li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .why-choose-us ul li i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      color: #2ECC71;  /* Green checkmark icon color */
+    }
+  </style>
+
+<body>
+  <div class="banner">
+    <h1>Book Your Train Tickets Today!</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Why Choose Us?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod odio ac diam volutpat consectetur. Donec at leo leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ultrices magna sit amet magna aliquam pulvinar. Donec eu libero sit amet quam egestas semper. Aenean eu leo quam. Pellentesque lorem quam, vehicula vel, faucibus id, porta nec, diam.</p>
+        <ul>
+          <li>Fast and Easy Booking</li>
+          <li>Competitive Prices</li>
+          <li>Secure Transactions</li>
+          <li>Wide Range of Destinations</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Search Trains</h2>
+        <form class="search-form" action="/train/search_train" method="get">
+          <div class="mb-3">
+            <label for="from" class="form-label">From:</label>
+            <input type="text" class="form-control" id="from" placeholder="Enter Origin City" list="programmingLanguages" name="from" required>
+            <datalist id="programmingLanguages">
+              <% for (let sta of station){%>
+              <option value="<%= sta.stnCode %>"><%= sta.stnName %></option>
+              <% } %>
+            </datalist>
+          </div>
+          <div class="mb-3">
+            <label for="to" class="form-label">To:</label>
+            <input type="text" class="form-control" id="to" placeholder="Enter Destination City" list="programmingLanguages" name="to" required>
+            <datalist id="programmingLanguages">
+              <% for (let sta of station){%>
+              <option value="<%= sta.stnCode %>"><%= sta.stnName %></option>
+              <% } %>
+            </datalist>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Departure Date:</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+          </div>
+          <button type="submit" class="btn btn-outline-dark">Find Trains</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>

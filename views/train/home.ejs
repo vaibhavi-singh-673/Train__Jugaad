@@ -1,0 +1,172 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+ <style>
+ .banner {
+      background-image: url("banner.jpg"); /* Replace with your high-quality banner image */
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-shadow: 0 0 3px rgba(0, 0, 0, 0.7);
+      font-family: 'Poppins', sans-serif;  /* Optional: Add a premium font */
+    }
+    .banner h1 {
+      font-size: 4rem;
+      text-align: center;
+    }
+    .search-form {
+      background-color: #f5f5f5;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .search-form input {
+      margin-bottom: 10px;
+      border-radius: 3px;
+    }
+    .why-choose-us {
+      margin-top: 50px;
+    }
+    .why-choose-us h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .why-choose-us ul li {
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+    }
+    .why-choose-us ul li i {
+      margin-right: 10px;
+      font-size: 1.2rem;
+      color: #2ECC71;  /* Green checkmark icon color */
+    }
+    .status{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0rem 1rem !important;
+    }
+    .status a{
+        text-decoration: none;
+        font-size: 2rem;
+        width: 100%;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(229, 229, 229);
+    }
+    .status a p{
+        font-size: 1rem;
+        text-align: left !important;
+    }
+    .inprow{
+  position: relative;
+  }
+
+  .dropdownitems {
+    padding: 0;
+    margin: 0;
+    z-index: 5;
+    list-style: none;
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    max-height:25vh;
+    overflow:auto;
+    background-color: #2f3238;
+  }
+  .dropdownitems li {
+    color: white;
+    background: #2f3238;
+    border-radius: 0.5em;
+  }
+    .dropdownitems li:hover {
+    background: #1d1f24;
+  }
+  .dropdownitems li a {
+    display: block;
+    padding: 0.7em ;
+    color: #fff;
+    margin:0;
+    text-decoration: none;
+  }
+  </style>
+
+<body>
+  <div class="banner">
+    <h1>Book Your Train Tickets Today!</h1>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h2>Why Choose Us?</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod odio ac diam volutpat consectetur. Donec at leo leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam ultrices magna sit amet magna aliquam pulvinar. Donec eu libero sit amet quam egestas semper. Aenean eu leo quam. Pellentesque lorem quam, vehicula vel, faucibus id, porta nec, diam.</p>
+        <ul>
+          <li>Fast and Easy Booking</li>
+          <li>Competitive Prices</li>
+          <li>Secure Transactions</li>
+          <li>Wide Range of Destinations</li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>Search Trains</h2>
+        <form class="search-form" action="/train/search_train" method="get" autocomplete="off">
+          <div class="mb-3 inprow" >
+            <label for="from" class="form-label">From:</label>
+            <input type="text" class="form-control" id="from" placeholder="Enter Origin City" name="from" list="programmingLanguages" required>
+            <datalist id="programmingLanguages">
+              <% for (let sta of station){%>
+              <option value="<%= sta.stnCode %>"><%= sta.stnName %></option>
+              <% } %>
+            </datalist>
+          </div>
+          <div class="mb-3">
+            <label for="to" class="form-label">To:</label>
+            <input type="text" class="form-control" id="to" placeholder="Enter Destination City" list="programmingLanguages" name="to" required>
+            <datalist id="programmingLanguages">
+              <% for (let sta of station){%>
+              <option value="<%= sta.stnCode %>"><%= sta.stnName %></option>
+              <% } %>
+            </datalist>
+          </div>
+          <div class="mb-3">
+            <label for="date" class="form-label">Departure Date:</label>
+            <input type="date" class="form-control" id="date" name="date" required>
+          </div>
+          <button type="submit" class="btn btn-outline-dark">Find Trains</button>
+        </form>
+      </div>
+      <div class="col-md-6 px-2 my-4 status">
+        <a class="btn btn-outline-dark" href="">Running Status <br><p>Where is my train?</p></a>
+      </div>
+      <div class="col-md-6 px-2 my-4 status">
+        <a class="btn btn-outline-dark" href="">PNR Status <br><p>What's my trip status?</p></a>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+
+  let inp = document.querySelector("#list");
+  let list = document.querySelector("#allItems0");
+  if (inp.value == ""){
+    list.style.display = "none"
+  }
+  else{
+    list.style.display = "list-item";
+  }
+
+  </script>
+
+
+</body>

@@ -1,0 +1,41 @@
+const mongoose = require('mongoose');
+
+const TrainSchema = new mongoose.Schema({
+    train_number: String,
+    train_name: String,
+    run_days: [String],
+    train_src: String,
+    train_dstn: String,
+    from_std: String,
+    from_sta: String,
+    local_train_from_sta: Number,
+    to_sta: String,
+    to_std: String,
+    from_day: Number,
+    to_day: Number,
+    d_day: Number,
+    from: String,
+    to: String,
+    from_station_name: String,
+    halt_stn: Number,
+    distance: Number,
+    to_station_name: String,
+    duration: String,
+    special_valid_to: Date,
+    special_train: Boolean,
+    train_type: String,
+    score: Number,
+    score_train_type: Number,
+    score_booking_requency: Number,
+    frequency_perc: Number,
+    from_distance_text: String,
+    to_distance_text: String,
+    duration_rating: Number,
+    score_duration: Number,
+    score_std: Number,
+    score_user_preferred: Number,
+    train_date: String,
+    class_type: [String]
+});
+
+module.exports = mongoose.model('Train', TrainSchema);

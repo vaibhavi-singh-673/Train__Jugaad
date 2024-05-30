@@ -1,0 +1,40 @@
+<% layout("/layouts/boilerplate") %>
+
+
+
+
+
+
+
+<style>
+    .login-form {
+      width: 350px;
+      margin: 50px auto;
+    }
+  </style>
+
+<body>
+  <div class="container">
+    <h1 class="text-center mb-4">Train Ticket Booking System</h1>
+    <form class="login-form" action="/user/user_login" method="post" novalidate class="needs-validation " autocomplete="off">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" aria-describedby="usernameHelp" name="username" placeholder="Enter USername" required>
+        <div class="valid-feedback">Good Username</div>
+        <div class="invalid-feedback">Please enter relevent username</div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+        <div class="valid-feedback">Welcome</div>
+        <div class="invalid-feedback">Wrong password</div>
+      </div>
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+      <a href="#" class="mt-3 d-block text-center">Forgot Password?</a>
+      <p class="text-center mt-3">New User? <a href="/user/user_signup">Sign Up</a></p>
+    </form>
+  </div>
+
+  </body>

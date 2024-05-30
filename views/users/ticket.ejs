@@ -1,0 +1,107 @@
+<% layout("/layouts/boilerplate") %>
+
+
+<style>
+    .shadow{
+      transition: .2s !important;
+    }
+    .shadow:hover{
+      box-shadow: 2px 2px 12px grey !important;
+      transform: scale(.95);
+    }
+  
+  
+  </style>
+  <body>
+    <div class="container py-5">
+      
+      <div class="row">
+          <div class="col-md-12 mb-3">
+              <div class="card shadow" id="ticket">
+                <div class="card-body">
+                  <h3 class="card-title text-center">Train Ticket</h3>
+                    <table class="table" style="border: 1px solid white;">
+                        <tr>
+                            <td>Passenger Name :</td>
+                            <td><%= user.first_name + " " + user.last_name %></td>
+                        </tr>
+                        <tr>
+                            <td>Passenger Age :</td>
+                            <td><%= user.age %></td>
+                        </tr>
+                        <tr>
+                            <td>Train Number : </td>
+                            <td><%= booking.train_number %></td>
+                        </tr>
+                        <tr>
+                            <td>Train Name : </td>
+                            <td><%= booking.train_name %></td>
+                        </tr>
+                        <tr>
+                            <td>From : </td>
+                            <td><%= booking.from_station_name %></td>
+                        </tr>
+                        <tr>
+                            <td>To : </td>
+                            <td><%= booking.to_station_name %></td>
+                        </tr>
+                        <tr>
+                            <td>Departure from source : </td>
+                            <td><%= booking.from_std %></td>
+                        </tr>
+                        <tr>
+                            <td>Arrival at destination : </td>
+                            <td><%= booking.to_sta %></td>
+                        </tr>
+                        <tr>
+                            <td>Duration : </td>
+                            <td><%= booking.duration %></td>
+                        </tr>
+                        <tr>
+                            <td>Class : </td>
+                            <td><%= booking.class_type %></td>
+                        </tr>
+                        <tr>
+                            <td>Date : </td>
+                            <td><%= booking.train_date %></td>
+                        </tr>
+                        <tr>
+                            <td>Ticket Fare : </td>
+                            <td> &#8377;<%= booking.fare %></td>
+                        </tr>
+                        <tr>
+                            <td>Total Paid : </td>
+                            <td> &#8377;<%= booking.total %></td>
+                        </tr>
+                    </table>
+                </div>
+              </div>
+              <br><br>
+              <div class="text-center">
+                <input type="button" class="btn btn-outline-dark btn-lg" onclick="printDiv('ticket')" value="Print Ticket" />
+              </div>
+            </div>
+
+  
+        </div>
+    </div>
+  
+  </body>
+
+
+
+
+<script>
+	window.onload=printDiv('printableArea');
+	function printDiv(divName) {
+		console.log("HHHHHHHH")
+    var divContents = document.getElementById(divName).innerHTML;
+        var a = window.open('', '', 'height=500, width=500');
+        a.document.write('<html>');
+        a.document.write('<body >');
+        a.document.write(divContents);
+        a.document.write('</body></html>');
+        a.document.close();
+        a.print();
+	}
+</script>
